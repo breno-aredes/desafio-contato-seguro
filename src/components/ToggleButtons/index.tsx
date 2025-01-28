@@ -1,11 +1,7 @@
 import React from "react";
 import { FaBook, FaUser } from "react-icons/fa";
 import * as S from "./styles";
-
-interface ToggleButtonsProps {
-  isSelected: string;
-  setIsSelected: (value: string) => void;
-}
+import { ToggleButtonsProps } from "../../types/ToogleButtons";
 
 const ToggleButtons: React.FC<ToggleButtonsProps> = ({
   isSelected,
