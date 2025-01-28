@@ -5,7 +5,8 @@ export const Body = styled.div`
   height: 100vh;
   position: relative;
   overflow: hidden;
-
+  font-family: "DM Sans", sans-serif;
+  letter-spacing: 0.5px;
   &::before {
     content: "";
     position: absolute;

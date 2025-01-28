@@ -6,6 +6,7 @@ export const HeaderContainer = styled.header`
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  font-weight: bold;
 `;
 
 export const Title = styled.h1`
