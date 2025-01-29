@@ -1,21 +1,21 @@
 import { useState } from "react";
 import * as S from "./styles";
 import { CiCircleAlert } from "react-icons/ci";
-import { AuthorFormValues, AuthorValues } from "../../types/authors";
+import { AuthorFormValues } from "../../types/authors";
 import Button from "../Buttons";
 import { ButtonContent } from "../../styles/index";
 import { BsPlusLg } from "react-icons/bs";
 import Modal from "../Modal";
 import AuthorsModalContent from "../ModalContent/Authors";
 import { SubmitHandler } from "react-hook-form";
+import { useAuthors } from "../../hooks/AuthorsContext";
 
 const Authors = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [authors, setAuthors] = useState<AuthorValues[]>([]);
+  const { authors, addAuthor } = useAuthors();
 
   const handleAddAuthor: SubmitHandler<AuthorFormValues> = (data) => {
-    const newAuthor = { ...data, id: Date.now() };
-    setAuthors([...authors, newAuthor]);
+    addAuthor(data);
     setModalOpen(false);
   };
 
