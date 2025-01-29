@@ -4,7 +4,7 @@ import * as S from "./styles";
 const Header: React.FC = () => {
   return (
     <S.HeaderContainer>
-      <S.Title>Definir um nome</S.Title>
+      <S.Title>Gerenciador de Livros e Autores</S.Title>
     </S.HeaderContainer>
   );
 };
