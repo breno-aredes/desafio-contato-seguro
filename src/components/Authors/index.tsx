@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./styles";
 import { CiCircleAlert } from "react-icons/ci";
 import { AuthorsProps } from "../../types/authors";
 import Button from "../Buttons";
 
 import { BsPlusLg } from "react-icons/bs";
+import Modal from "../Modal";
 
 const Authors: React.FC<AuthorsProps> = ({ authors }) => {
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
   return (
     <>
       <S.AuthorSection>
@@ -20,11 +22,15 @@ const Authors: React.FC<AuthorsProps> = ({ authors }) => {
         )}
       </S.AuthorSection>
       <S.ButtonContent>
-        <Button>
+        <Button onClick={() => setModalOpen(true)}>
           <BsPlusLg />
           Adicionar autor
         </Button>
       </S.ButtonContent>
+
+      <Modal isModalOpen={modalOpen}>
+        <Button onClick={() => setModalOpen(false)}>sair</Button>
+      </Modal>
     </>
   );
 };
