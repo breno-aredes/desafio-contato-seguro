@@ -16,6 +16,14 @@ const possibleColors = {
     border: `1px solid gray`,
     color: "#333",
   },
+  transparent: {
+    "background-color": "transparent",
+    border: `1px solid #4a90e2 `,
+    color: "#4a90e2",
+    "&:hover": {
+      backgroundColor: "#e8f0fa",
+    },
+  },
 };
 
 const possibleSizes = {

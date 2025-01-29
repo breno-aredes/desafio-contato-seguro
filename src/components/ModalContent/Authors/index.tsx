@@ -39,7 +39,7 @@ const AuthorsModalContent: React.FC<AuthorsModalContentProps> = ({
         error={errors.email}
       />
       <ButtonContent>
-        <Button type="button" onClick={onClose}>
+        <Button type="button" color="transparent" onClick={onClose}>
           Sair
         </Button>
         <Button type="submit">Cadastrar</Button>

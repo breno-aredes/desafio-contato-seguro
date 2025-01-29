@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from "react";
 
-export type Colors = "blue" | "disabled";
+export type Colors = "blue" | "disabled" | "transparent";
 
 export type Sizes = "sm" | "md";
 
