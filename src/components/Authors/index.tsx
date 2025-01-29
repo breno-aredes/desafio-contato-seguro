@@ -3,6 +3,7 @@ import * as S from "./styles";
 import { CiCircleAlert } from "react-icons/ci";
 import { AuthorsProps } from "../../types/authors";
 import Button from "../Buttons";
+import { ButtonContent } from "../../styles/index";
 
 import { BsPlusLg } from "react-icons/bs";
 import Modal from "../Modal";
@@ -21,15 +22,18 @@ const Authors: React.FC<AuthorsProps> = ({ authors }) => {
           <></>
         )}
       </S.AuthorSection>
-      <S.ButtonContent>
+      <ButtonContent>
         <Button onClick={() => setModalOpen(true)}>
           <BsPlusLg />
           Adicionar autor
         </Button>
-      </S.ButtonContent>
+      </ButtonContent>
 
       <Modal isModalOpen={modalOpen}>
-        <Button onClick={() => setModalOpen(false)}>sair</Button>
+        <ButtonContent>
+          <Button onClick={() => setModalOpen(false)}>Sair</Button>
+          <Button onClick={() => setModalOpen(false)}>Cadastrar</Button>
+        </ButtonContent>
       </Modal>
     </>
   );

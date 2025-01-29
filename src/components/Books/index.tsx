@@ -4,6 +4,7 @@ import { CiCircleAlert } from "react-icons/ci";
 import { BooksProps } from "../../types/Books";
 import Button from "../Buttons";
 import { BsPlusLg } from "react-icons/bs";
+import { ButtonContent } from "../../styles/index";
 
 const Books: React.FC<BooksProps> = ({ books }) => {
   return (
@@ -19,12 +20,12 @@ const Books: React.FC<BooksProps> = ({ books }) => {
         )}
       </S.BookSection>
 
-      <S.ButtonContent>
+      <ButtonContent>
         <Button>
           <BsPlusLg />
           Adicionar livro
         </Button>
-      </S.ButtonContent>
+      </ButtonContent>
     </>
   );
 };
