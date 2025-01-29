@@ -1,10 +1,7 @@
 import React from "react";
 import * as S from "./styles";
 import { CiCircleAlert } from "react-icons/ci";
-
-interface AuthorsProps {
-  authors: string[];
-}
+import { AuthorsProps } from "../../types/authors";
 
 const Authors: React.FC<AuthorsProps> = ({ authors }) => {
   return (
