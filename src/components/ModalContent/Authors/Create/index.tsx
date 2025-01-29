@@ -38,7 +38,7 @@ const AuthorsModalContent: React.FC<AuthorsModalContentProps> = ({
         {...register("email")}
         error={errors.email}
       />
-      <ButtonContent>
+      <ButtonContent spaceBetween>
         <Button type="button" color="transparent" onClick={onClose}>
           Sair
         </Button>

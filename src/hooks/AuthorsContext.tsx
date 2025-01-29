@@ -10,6 +10,7 @@ import { AuthorValues, AuthorFormValues } from "../types/authors";
 interface AuthorsContextProps {
   authors: AuthorValues[];
   addAuthor: (author: AuthorFormValues) => void;
+  removeAuthor: (id: number) => void;
 }
 
 const AuthorsContext = createContext<AuthorsContextProps | undefined>(
@@ -37,8 +38,14 @@ export const AuthorsProvider = ({
     setAuthors((prevAuthors) => [...prevAuthors, newAuthor]);
   };
 
+  const removeAuthor = (id: number) => {
+    setAuthors((prevAuthors) =>
+      prevAuthors.filter((author) => author.id !== id)
+    );
+  };
+
   return (
-    <AuthorsContext.Provider value={{ authors, addAuthor }}>
+    <AuthorsContext.Provider value={{ authors, addAuthor, removeAuthor }}>
       {children}
     </AuthorsContext.Provider>
   );

@@ -17,7 +17,7 @@ const Authors = () => {
   const [viewModalOpen, setViewModalOpen] = useState<boolean>(false);
   const [DeleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
   const [author, setAutor] = useState<AuthorValues | null>(null);
-  const { authors, addAuthor } = useAuthors();
+  const { authors, addAuthor, removeAuthor } = useAuthors();
 
   const handleAddAuthor: SubmitHandler<AuthorFormValues> = (data) => {
     addAuthor(data);
@@ -34,7 +34,12 @@ const Authors = () => {
     setDeleteModalOpen(true);
   };
 
-  const handleDeleteAuthor = () => {};
+  const handleDeleteAuthor = () => {
+    if (author) {
+      removeAuthor(author.id);
+      setDeleteModalOpen(false);
+    }
+  };
 
   return (
     <>
