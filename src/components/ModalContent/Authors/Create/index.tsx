@@ -1,14 +1,14 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ButtonContent } from "../../../styles/index";
-import Button from "../../Buttons";
-import Input from "../../input";
-import { authorSchema } from "../../../schemas/Authors";
+import { ButtonContent } from "../../../../styles/index";
+import Button from "../../../Buttons";
+import Input from "../../../input";
+import { authorSchema } from "../../../../schemas/Authors";
 import {
   AuthorFormValues,
   AuthorsModalContentProps,
-} from "../../../types/authors";
+} from "../../../../types/authors";
 import { Title } from "./styles";
 
 const AuthorsModalContent: React.FC<AuthorsModalContentProps> = ({
