@@ -10,8 +10,8 @@ export const Dashboard = () => {
   return (
     <DashBoardBody>
       <ToggleButtons isSelected={isSelected} setIsSelected={setIsSelected} />
-      {isSelected === "authors" && <Authors authors={[]} />}
-      {isSelected === "books" && <Books books={[]} />}
+      {isSelected === "authors" && <Authors />}
+      {isSelected === "books" && <Books />}
     </DashBoardBody>
   );
 };

@@ -4,31 +4,29 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  max-height: 94px;
-  height: auto;
+  height: 90px;
 
   label {
     font-size: 15px;
     color: #717171;
     width: auto;
     margin-bottom: 2px;
+    margin-left: 3px;
   }
   p {
+    margin-left: 3px;
     color: #fb5643;
     font-size: 13px;
   }
 `;
 
 export const InputContainer = styled.div`
-  width: 100%;
-  height: 50px;
+  min-height: 30px;
+  max-height: 30px;
   padding: 8px;
   background-color: #ffffff;
   border: 2px solid lightgray;
   border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 
   svg {
     color: #aaaaaa;
@@ -38,9 +36,8 @@ export const InputContainer = styled.div`
     border: none;
     width: 100%;
     height: 100%;
-    font-family: "Poppins", serif;
     font-size: 15px;
-    color: #1a1a1a;
+    color: #333;
 
     &::placeholder {
       color: #aaaaaa;

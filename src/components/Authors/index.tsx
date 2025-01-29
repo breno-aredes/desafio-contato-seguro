@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import * as S from "./styles";
 import { CiCircleAlert } from "react-icons/ci";
-import { AuthorsProps } from "../../types/authors";
+import { AuthorFormValues, AuthorValues } from "../../types/authors";
 import Button from "../Buttons";
 import { ButtonContent } from "../../styles/index";
-
 import { BsPlusLg } from "react-icons/bs";
 import Modal from "../Modal";
+import AuthorsModalContent from "../ModalContent/Authors";
+import { SubmitHandler } from "react-hook-form";
 
-const Authors: React.FC<AuthorsProps> = ({ authors }) => {
+const Authors = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [authors, setAuthors] = useState<AuthorValues[]>([]);
+
+  const handleAddAuthor: SubmitHandler<AuthorFormValues> = (data) => {
+    const newAuthor = { ...data, id: Date.now() };
+    setAuthors([...authors, newAuthor]);
+    setModalOpen(false);
+  };
+
   return (
     <>
       <S.AuthorSection>
@@ -30,10 +39,10 @@ const Authors: React.FC<AuthorsProps> = ({ authors }) => {
       </ButtonContent>
 
       <Modal isModalOpen={modalOpen}>
-        <ButtonContent>
-          <Button onClick={() => setModalOpen(false)}>Sair</Button>
-          <Button onClick={() => setModalOpen(false)}>Cadastrar</Button>
-        </ButtonContent>
+        <AuthorsModalContent
+          onSubmit={handleAddAuthor}
+          onClose={() => setModalOpen(false)}
+        />
       </Modal>
     </>
   );

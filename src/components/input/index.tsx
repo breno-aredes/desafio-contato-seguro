@@ -1,22 +1,18 @@
 import { forwardRef } from "react";
 import { Container, InputContainer } from "./styles";
-import { InputHTMLAttributes } from "react";
-import { FieldError, UseFormRegister } from "react-hook-form";
-
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label?: string;
-  field: string;
-  error?: FieldError;
-  register: UseFormRegister<Record<string, unknown>>;
-}
+import { InputProps } from "../../types/input";
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, field, register, error, ...props }: InputProps, ref) => {
     return (
       <Container>
-        {label && <label htmlFor={props.id}>{label}</label>}
+        {label && <label htmlFor={props.id || field}>{label}</label>}
         <InputContainer>
-          <input id={props.id} {...props} {...register(field)} ref={ref} />
+          <input
+            {...props}
+            {...(!!register && register(field as string))}
+            ref={ref}
+          />
         </InputContainer>
         {error && <p>{error.message}</p>}
       </Container>

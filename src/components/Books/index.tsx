@@ -1,12 +1,13 @@
-import React from "react";
 import * as S from "./styles";
 import { CiCircleAlert } from "react-icons/ci";
-import { BooksProps } from "../../types/Books";
 import Button from "../Buttons";
 import { BsPlusLg } from "react-icons/bs";
 import { ButtonContent } from "../../styles/index";
+import { useState } from "react";
 
-const Books: React.FC<BooksProps> = ({ books }) => {
+const Books = () => {
+  const [books, setBooks] = useState<string[]>([]);
+
   return (
     <>
       <S.BookSection>
