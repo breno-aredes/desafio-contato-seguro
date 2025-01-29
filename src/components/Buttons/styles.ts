@@ -27,11 +27,15 @@ const possibleColors = {
 };
 
 const possibleSizes = {
-  sm: {},
+  sm: {
+    borderRadius: "50%",
+    padding: "8px",
+  },
   md: {
     width: "200px",
     borderRadius: "10px",
     fontSize: "14px",
+    padding: "16px",
   },
 };
 
@@ -43,7 +47,6 @@ export const StyledButton = styled.button<StyledButtonProps>(
     ...possibleSizes[size as keyof typeof possibleSizes],
     fontWeight: "500",
 
-    padding: "16px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",

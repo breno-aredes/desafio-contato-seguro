@@ -9,6 +9,7 @@ import Modal from "../Modal";
 import AuthorsModalContent from "../ModalContent/Authors";
 import { SubmitHandler } from "react-hook-form";
 import { useAuthors } from "../../hooks/AuthorsContext";
+import { FaRegEye, FaRegTrashAlt } from "react-icons/fa";
 
 const Authors = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -28,7 +29,33 @@ const Authors = () => {
             Nenhum autor cadastrado
           </S.NoAuthors>
         ) : (
-          <></>
+          <>
+            <S.Table>
+              <thead>
+                <tr>
+                  <S.TableHeader>Index</S.TableHeader>
+                  <S.TableHeader>Nome do Autor</S.TableHeader>
+                  <S.TableHeader>Ação</S.TableHeader>
+                </tr>
+              </thead>
+              <tbody>
+                {authors.map((author, index) => (
+                  <S.TableRow key={author.id}>
+                    <S.TableCell>{index + 1}</S.TableCell>
+                    <S.TableCell>{author.name}</S.TableCell>
+                    <S.TableCell>
+                      <Button size="sm">
+                        <FaRegEye />
+                      </Button>
+                      <Button size="sm">
+                        <FaRegTrashAlt />
+                      </Button>
+                    </S.TableCell>
+                  </S.TableRow>
+                ))}
+              </tbody>
+            </S.Table>
+          </>
         )}
       </S.AuthorSection>
       <ButtonContent>
