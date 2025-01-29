@@ -7,6 +7,9 @@ const possibleColors = {
     "background-color": "#4a90e2",
     border: `1px solid #4a90e2 `,
     color: "white",
+    "&:hover": {
+      backgroundColor: "#2f79ce",
+    },
   },
   disabled: {
     "background-color": "gray",
@@ -40,7 +43,7 @@ export const StyledButton = styled.button<StyledButtonProps>(
     cursor: disabled ? "not-allowed" : "pointer",
     transition: "0.2s",
     svg: {
-      width: "22px",
+      fontSize: "20px",
     },
   })
 );

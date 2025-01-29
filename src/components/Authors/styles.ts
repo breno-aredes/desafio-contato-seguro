@@ -19,3 +19,10 @@ export const NoAuthors = styled.div`
     font-size: 25px;
   }
 `;
+
+export const ButtonContent = styled.div`
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+`;
