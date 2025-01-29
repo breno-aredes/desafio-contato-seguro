@@ -5,7 +5,11 @@ export const Body = styled.div`
   height: 100vh;
   position: relative;
   overflow: hidden;
-
+  font-family: "DM Sans", sans-serif;
+  letter-spacing: 0.5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   &::before {
     content: "";
     position: absolute;
