@@ -8,17 +8,32 @@ import { useState } from "react";
 import Modal from "../Modal";
 import BooksModalContent from "../ModalContent/Books/Create";
 import { SubmitHandler } from "react-hook-form";
-import { BookFormValues } from "../../types/Books";
+import { BookFormValues, BookValues } from "../../types/Books";
 import { useBooks } from "../../hooks/BooksContext";
 import { FaRegEye, FaRegTrashAlt } from "react-icons/fa";
+import DeleteItem from "../ModalContent/DeleteItem";
 
 const Books = () => {
-  const { books, addBook } = useBooks();
+  const { books, addBook, removeBook } = useBooks();
   const [createModalIsOpen, setCreateModalIsOpen] = useState<boolean>(false);
+  const [book, setBook] = useState<BookValues | null>(null);
+  const [DeleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
 
   const handleAddBook: SubmitHandler<BookFormValues> = (data) => {
     setCreateModalIsOpen(false);
     addBook(data);
+  };
+
+  const handleOpenDeleteBook = (data: BookValues) => {
+    setBook(data);
+    setDeleteModalOpen(true);
+  };
+
+  const handleDeleteBook = () => {
+    if (book) {
+      removeBook(book.id);
+      setDeleteModalOpen(false);
+    }
   };
 
   return (
@@ -48,7 +63,10 @@ const Books = () => {
                       <Button size="sm" color="transparent">
                         <FaRegEye />
                       </Button>
-                      <Button size="sm">
+                      <Button
+                        size="sm"
+                        onClick={() => handleOpenDeleteBook(book)}
+                      >
                         <FaRegTrashAlt />
                       </Button>
                     </ES.TableCell>
@@ -72,6 +90,14 @@ const Books = () => {
           onSubmit={handleAddBook}
           onClose={() => setCreateModalIsOpen(false)}
         ></BooksModalContent>
+      </Modal>
+
+      <Modal isModalOpen={DeleteModalOpen}>
+        <DeleteItem
+          setCancel={setDeleteModalOpen}
+          nextStep={handleDeleteBook}
+          deleteType="livro"
+        />
       </Modal>
     </>
   );
