@@ -19,7 +19,7 @@ const Authors = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [viewModalOpen, setViewModalOpen] = useState<boolean>(false);
   const [DeleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
-  const [author, setAutor] = useState<AuthorValues | null>(null);
+  const [author, setAuthor] = useState<AuthorValues | null>(null);
   const { authors, addAuthor, removeAuthor } = useAuthors();
   const [authorBooks, setAuthorBooks] = useState<BookValues[] | null>(null);
   const { removeBooksByAuthor, books } = useBooks();
@@ -30,14 +30,14 @@ const Authors = () => {
   };
 
   const handleViewAuthor = (data: AuthorValues) => {
-    setAutor(data);
+    setAuthor(data);
     const filteredBooks = books.filter((book) => book.author_id === data.id);
     setAuthorBooks(filteredBooks);
     setViewModalOpen(true);
   };
 
   const handleOpenDeleteAuthor = (data: AuthorValues) => {
-    setAutor(data);
+    setAuthor(data);
     setDeleteModalOpen(true);
   };
 

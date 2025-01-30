@@ -26,7 +26,7 @@ export const ViewBody = styled.div`
   }
 `;
 
-export const AuthorData = styled.div`
+export const BookData = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
 `;

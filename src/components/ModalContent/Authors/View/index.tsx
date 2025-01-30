@@ -24,7 +24,7 @@ const ViewAuthorsModalContent: React.FC<ViewAuthorsModalContentProps> = ({
         </div>
       </S.AuthorData>
 
-      <S.BooksData>
+      <div>
         <h2>Livros:</h2>
         {authorBooks && authorBooks.length > 0 ? (
           authorBooks.map((book) => (
@@ -35,13 +35,12 @@ const ViewAuthorsModalContent: React.FC<ViewAuthorsModalContentProps> = ({
         ) : (
           <h3>Esse autor ainda não possui livros cadastrados.</h3>
         )}
-      </S.BooksData>
+      </div>
 
-      <ButtonContent spaceBetween>
-        <Button type="button" color="transparent" onClick={onClose}>
+      <ButtonContent>
+        <Button type="button" onClick={onClose}>
           Sair
         </Button>
-        <Button type="submit">Cadastrar</Button>
       </ButtonContent>
     </S.ViewBody>
   );
