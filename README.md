@@ -1,50 +1,74 @@
-# React + TypeScript + Vite
+# Desafio Contato Seguro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introdução
 
-Currently, two official plugins are available:
+O Desafio Contato Seguro é criar um CRUD de livros e autores desenvolvido como um desafio de front-end. O objetivo é demonstrar as habilidades em React, manipulação de estado, estilização e gerenciamento de formulários, utilizando as melhores práticas e tecnologias recomendadas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Funcionalidades
 
-## Expanding the ESLint configuration
+- Autores:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+  - Visualizar todos os autores (tabela):
+    - Exibe uma lista de todos os autores cadastrados.
+  - Criar um autor (modal):
+    - Apenas o nome é obrigatório.
+  - Visualizar um autor específico (modal):
+    - Exibe Nome, E-mail e Livros do autor.
+  - Excluir um autor (alerta):
+    - Exclui támbem os livros vinculados ao autor.
 
-- Configure the top-level `parserOptions` property like this:
+  ![Página Inicial](public/img1.jpg)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- Livros:
+
+  - Visualizar todos os livros (tabela):
+    - Exibe uma lista de todos os livros cadastrados.
+  - Criar um livro (modal):
+    - Apenas nome é obrigatório.
+  - Visualizar um livro específico (modal):
+    - Exibe Nome, Páginas e Nome do Autor.
+  - Excluir um livro (alerta):
+    - Remove o livro selecionado.
+
+  ![Página Inicial](public/img2.jpg)
+
+## Instalação
+
+1. Clone o repositório:
+
+```sh
+git clone git@github.com:breno-aredes/desafio-contato-seguro.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Acesse o diretório do projeto:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```sh
+cd desafio-contato-seguro
 ```
+
+3. Instale as dependências:
+
+```sh
+npm install
+```
+
+3. Inicie o servidor de desenvolvimento:
+
+```sh
+npm run dev
+```
+
+## Tecnologias Utilizadas
+
+- React: Biblioteca para construção da interface do usuário.
+- React Hook Form: Biblioteca para gerenciamento de formulários.
+- Yup: Biblioteca para validação de formulários.
+- Radix UI: Biblioteca para construção de componentes acessíveis.
+- Styled Components: Biblioteca para estilização de componentes.
+- TypeScript: Superset do JavaScript que adiciona tipagem estática.
+- Vite: Ferramenta de build rápida e configurável.
+
+## Link do Deploy
+
+O projeto está disponível online e pode ser acessado através do seguinte link:
+[Deploy do Projeto](https://seu-link-deploy.com)
