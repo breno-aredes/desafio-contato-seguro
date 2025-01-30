@@ -13,6 +13,8 @@ import { useBooks } from "../../hooks/BooksContext";
 import { FaRegEye, FaRegTrashAlt } from "react-icons/fa";
 import DeleteItem from "../ModalContent/SimpleContent";
 import { useAuthors } from "../../hooks/AuthorsContext";
+import { AuthorValues } from "../../types/authors";
+import ViewBookModalContent from "../ModalContent/Books/View";
 
 const Books = () => {
   const { books, addBook, removeBook } = useBooks();
@@ -21,6 +23,8 @@ const Books = () => {
   const [DeleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
   const [alert, setAlert] = useState<boolean>(false);
   const { authors } = useAuthors();
+  const [author, setAuthor] = useState<AuthorValues | null>(null);
+  const [viewModalOpen, setViewModalOpen] = useState<boolean>(false);
 
   const handleAddBook: SubmitHandler<BookFormValues> = (data) => {
     setCreateModalIsOpen(false);
@@ -39,6 +43,14 @@ const Books = () => {
     }
   };
 
+  const handleViewBook = (data: BookValues) => {
+    setBook(data);
+    const filteredAuthor =
+      authors.find((author) => author.id === data.author_id) || null;
+    setAuthor(filteredAuthor);
+    setViewModalOpen(true);
+  };
+
   return (
     <>
       <S.BookSection>
@@ -48,7 +60,7 @@ const Books = () => {
             Nenhum livro cadastrado
           </S.NoBooks>
         ) : (
-          <>
+          <ES.TableContainer>
             <ES.Table>
               <thead>
                 <tr>
@@ -63,7 +75,11 @@ const Books = () => {
                     <ES.TableCell>{index + 1}</ES.TableCell>
                     <ES.TableCell>{book.name}</ES.TableCell>
                     <ES.TableCell>
-                      <Button size="sm" color="transparent">
+                      <Button
+                        size="sm"
+                        color="transparent"
+                        onClick={() => handleViewBook(book)}
+                      >
                         <FaRegEye />
                       </Button>
                       <Button
@@ -77,14 +93,14 @@ const Books = () => {
                 ))}
               </tbody>
             </ES.Table>
-          </>
+          </ES.TableContainer>
         )}
       </S.BookSection>
 
       <ButtonContent>
         <Button
           onClick={() =>
-            authors ? setAlert(true) : setCreateModalIsOpen(true)
+            authors.length === 0 ? setAlert(true) : setCreateModalIsOpen(true)
           }
         >
           <BsPlusLg />
@@ -96,7 +112,7 @@ const Books = () => {
         <BooksModalContent
           onSubmit={handleAddBook}
           onClose={() => setCreateModalIsOpen(false)}
-        ></BooksModalContent>
+        />
       </Modal>
 
       <Modal isModalOpen={DeleteModalOpen}>
@@ -117,6 +133,14 @@ const Books = () => {
 
       <Modal isModalOpen={alert}>
         <DeleteItem setCancel={setAlert} type="alert" />
+      </Modal>
+
+      <Modal isModalOpen={viewModalOpen}>
+        <ViewBookModalContent
+          onClose={() => setViewModalOpen(false)}
+          author={author}
+          book={book}
+        />
       </Modal>
     </>
   );

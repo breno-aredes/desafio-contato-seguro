@@ -9,13 +9,19 @@ const SimpleContent = ({ nextStep, setCancel, type }: SimpleContentProps) => {
     <S.DeleteContent>
       <CiCircleAlert />
       {type === "alert" ? (
-        <p>
+        <h3>
           Você precisa criar um <span>autor</span> antes de criar um{" "}
           <span>livro</span>
-        </p>
+        </h3>
       ) : (
-        <p>
+        <h3>
           Tem certeza que deseja deletar este <span>{type}</span>?
+        </h3>
+      )}
+      {type === "autor" && (
+        <p>
+          Ao deletar este autor, todos os livros vinculados a ele também serão
+          excluídos.
         </p>
       )}
 

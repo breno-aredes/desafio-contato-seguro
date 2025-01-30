@@ -12,8 +12,12 @@ export const DeleteContent = styled.div`
     font-size: 100px;
     color: #333;
   }
-  p {
+  h3 {
     font-size: 30px;
+    text-align: center;
+  }
+  p {
+    font-size: 15px;
     text-align: center;
   }
   span {

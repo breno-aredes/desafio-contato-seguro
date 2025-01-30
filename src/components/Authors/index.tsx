@@ -11,13 +11,18 @@ import { SubmitHandler } from "react-hook-form";
 import { useAuthors } from "../../hooks/AuthorsContext";
 import { FaRegEye, FaRegTrashAlt } from "react-icons/fa";
 import DeleteItem from "../ModalContent/SimpleContent";
+import { useBooks } from "../../hooks/BooksContext";
+import ViewAuthorsModalContent from "../ModalContent/Authors/View";
+import { BookValues } from "../../types/Books";
 
 const Authors = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [viewModalOpen, setViewModalOpen] = useState<boolean>(false);
   const [DeleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
-  const [author, setAutor] = useState<AuthorValues | null>(null);
+  const [author, setAuthor] = useState<AuthorValues | null>(null);
   const { authors, addAuthor, removeAuthor } = useAuthors();
+  const [authorBooks, setAuthorBooks] = useState<BookValues[] | null>(null);
+  const { removeBooksByAuthor, books } = useBooks();
 
   const handleAddAuthor: SubmitHandler<AuthorFormValues> = (data) => {
     addAuthor(data);
@@ -25,18 +30,21 @@ const Authors = () => {
   };
 
   const handleViewAuthor = (data: AuthorValues) => {
-    setAutor(data);
+    setAuthor(data);
+    const filteredBooks = books.filter((book) => book.author_id === data.id);
+    setAuthorBooks(filteredBooks);
     setViewModalOpen(true);
   };
 
   const handleOpenDeleteAuthor = (data: AuthorValues) => {
-    setAutor(data);
+    setAuthor(data);
     setDeleteModalOpen(true);
   };
 
   const handleDeleteAuthor = () => {
     if (author) {
       removeAuthor(author.id);
+      removeBooksByAuthor(author.id);
       setDeleteModalOpen(false);
     }
   };
@@ -50,7 +58,7 @@ const Authors = () => {
             Nenhum autor cadastrado
           </S.NoAuthors>
         ) : (
-          <>
+          <ES.TableContainer>
             <ES.Table>
               <thead>
                 <tr>
@@ -59,6 +67,7 @@ const Authors = () => {
                   <ES.TableHeader>Ação</ES.TableHeader>
                 </tr>
               </thead>
+
               <tbody>
                 {authors.map((author, index) => (
                   <ES.TableRow key={author.id}>
@@ -83,7 +92,7 @@ const Authors = () => {
                 ))}
               </tbody>
             </ES.Table>
-          </>
+          </ES.TableContainer>
         )}
       </S.AuthorSection>
       <ES.ButtonContent>
@@ -101,7 +110,11 @@ const Authors = () => {
       </Modal>
 
       <Modal isModalOpen={viewModalOpen}>
-        <Button onClick={() => setViewModalOpen(false)}></Button>
+        <ViewAuthorsModalContent
+          onClose={() => setViewModalOpen(false)}
+          author={author}
+          authorBooks={authorBooks}
+        />
       </Modal>
 
       <Modal isModalOpen={DeleteModalOpen}>

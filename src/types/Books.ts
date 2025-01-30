@@ -1,4 +1,5 @@
 import { SubmitHandler } from "react-hook-form";
+import { AuthorValues } from "./authors";
 
 export interface BookFormValues {
   name: string;
@@ -10,10 +11,16 @@ export interface BookValues {
   id: number;
   name: string;
   author_id: number;
-  apges?: string;
+  pages?: string;
 }
 
 export interface BookModalContentProps {
   onSubmit: SubmitHandler<BookFormValues>;
+  onClose: () => void;
+}
+
+export interface ViewBookModalContentProps {
+  book: BookValues | null;
+  author: AuthorValues | null;
   onClose: () => void;
 }
