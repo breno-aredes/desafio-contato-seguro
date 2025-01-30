@@ -1,14 +1,8 @@
-import { Dispatch, SetStateAction } from "react";
 import Button from "../../Buttons";
 import { ButtonContent } from "../../../styles/index";
 import * as S from "./styles";
 import { CiCircleAlert } from "react-icons/ci";
-
-interface DeleteItemProps {
-  nextStep: () => void;
-  setCancel: Dispatch<SetStateAction<boolean>>;
-  deleteType: string;
-}
+import { DeleteItemProps } from "../../../types/modalContent";
 
 const DeleteItem = ({ nextStep, setCancel, deleteType }: DeleteItemProps) => {
   return (
