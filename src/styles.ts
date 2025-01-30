@@ -17,7 +17,7 @@ export const Body = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("/src/assets/books.jpg");
+    background-image: url("/books.jpg");
     background-repeat: repeat;
     background-size: auto;
     background-position: top left;
