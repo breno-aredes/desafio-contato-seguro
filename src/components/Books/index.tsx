@@ -22,6 +22,8 @@ const Books = () => {
   const [alert, setAlert] = useState<boolean>(false);
   const { authors } = useAuthors();
 
+  console.log(authors);
+
   const handleAddBook: SubmitHandler<BookFormValues> = (data) => {
     setCreateModalIsOpen(false);
     addBook(data);
@@ -84,7 +86,7 @@ const Books = () => {
       <ButtonContent>
         <Button
           onClick={() =>
-            authors ? setAlert(true) : setCreateModalIsOpen(true)
+            authors.length === 0 ? setAlert(true) : setCreateModalIsOpen(true)
           }
         >
           <BsPlusLg />
@@ -96,7 +98,7 @@ const Books = () => {
         <BooksModalContent
           onSubmit={handleAddBook}
           onClose={() => setCreateModalIsOpen(false)}
-        ></BooksModalContent>
+        />
       </Modal>
 
       <Modal isModalOpen={DeleteModalOpen}>

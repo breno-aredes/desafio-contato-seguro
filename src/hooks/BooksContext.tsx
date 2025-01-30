@@ -11,6 +11,7 @@ interface BooksContextProps {
   books: BookValues[];
   addBook: (book: BookFormValues) => void;
   removeBook: (id: number) => void;
+  removeBooksByAuthor: (authorId: number) => void; // New function to remove books by author ID
 }
 
 const BooksContext = createContext<BooksContextProps | undefined>(undefined);
@@ -40,8 +41,16 @@ export const BooksProvider = ({
     setBooks((prevBooks) => prevBooks.filter((book) => book.id !== id));
   };
 
+  const removeBooksByAuthor = (authorId: number) => {
+    setBooks((prevBooks) =>
+      prevBooks.filter((book) => book.author_id !== authorId)
+    );
+  };
+
   return (
-    <BooksContext.Provider value={{ books, addBook, removeBook }}>
+    <BooksContext.Provider
+      value={{ books, addBook, removeBook, removeBooksByAuthor }}
+    >
       {children}
     </BooksContext.Provider>
   );

@@ -11,6 +11,7 @@ import { SubmitHandler } from "react-hook-form";
 import { useAuthors } from "../../hooks/AuthorsContext";
 import { FaRegEye, FaRegTrashAlt } from "react-icons/fa";
 import DeleteItem from "../ModalContent/SimpleContent";
+import { useBooks } from "../../hooks/BooksContext";
 
 const Authors = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -18,6 +19,7 @@ const Authors = () => {
   const [DeleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
   const [author, setAutor] = useState<AuthorValues | null>(null);
   const { authors, addAuthor, removeAuthor } = useAuthors();
+  const { removeBooksByAuthor } = useBooks();
 
   const handleAddAuthor: SubmitHandler<AuthorFormValues> = (data) => {
     addAuthor(data);
@@ -37,6 +39,7 @@ const Authors = () => {
   const handleDeleteAuthor = () => {
     if (author) {
       removeAuthor(author.id);
+      removeBooksByAuthor(author.id);
       setDeleteModalOpen(false);
     }
   };
