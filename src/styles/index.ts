@@ -14,6 +14,12 @@ export const Table = styled.table`
   border-collapse: collapse;
 `;
 
+export const TableContainer = styled.div`
+  width: 100%;
+  max-height: 500px;
+  overflow-y: auto;
+`;
+
 export const TableHeader = styled.th`
   border-bottom: 2px solid #ddd;
   padding: 10px;

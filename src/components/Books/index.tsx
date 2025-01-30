@@ -60,7 +60,7 @@ const Books = () => {
             Nenhum livro cadastrado
           </S.NoBooks>
         ) : (
-          <>
+          <ES.TableContainer>
             <ES.Table>
               <thead>
                 <tr>
@@ -93,7 +93,7 @@ const Books = () => {
                 ))}
               </tbody>
             </ES.Table>
-          </>
+          </ES.TableContainer>
         )}
       </S.BookSection>
 

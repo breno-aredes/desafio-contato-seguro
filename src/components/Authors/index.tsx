@@ -58,7 +58,7 @@ const Authors = () => {
             Nenhum autor cadastrado
           </S.NoAuthors>
         ) : (
-          <>
+          <ES.TableContainer>
             <ES.Table>
               <thead>
                 <tr>
@@ -67,6 +67,7 @@ const Authors = () => {
                   <ES.TableHeader>Ação</ES.TableHeader>
                 </tr>
               </thead>
+
               <tbody>
                 {authors.map((author, index) => (
                   <ES.TableRow key={author.id}>
@@ -91,7 +92,7 @@ const Authors = () => {
                 ))}
               </tbody>
             </ES.Table>
-          </>
+          </ES.TableContainer>
         )}
       </S.AuthorSection>
       <ES.ButtonContent>
