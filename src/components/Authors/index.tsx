@@ -3,7 +3,7 @@ import * as S from "./styles";
 import { CiCircleAlert } from "react-icons/ci";
 import { AuthorFormValues, AuthorValues } from "../../types/authors";
 import Button from "../Buttons";
-import { ButtonContent } from "../../styles/index";
+import * as ES from "../../styles/index";
 import { BsPlusLg } from "react-icons/bs";
 import Modal from "../Modal";
 import AuthorsModalContent from "../ModalContent/Authors/Create";
@@ -51,20 +51,20 @@ const Authors = () => {
           </S.NoAuthors>
         ) : (
           <>
-            <S.Table>
+            <ES.Table>
               <thead>
                 <tr>
-                  <S.TableHeader>Index</S.TableHeader>
-                  <S.TableHeader>Nome do Autor</S.TableHeader>
-                  <S.TableHeader>Ação</S.TableHeader>
+                  <ES.TableHeader>Index</ES.TableHeader>
+                  <ES.TableHeader>Nome do Autor</ES.TableHeader>
+                  <ES.TableHeader>Ação</ES.TableHeader>
                 </tr>
               </thead>
               <tbody>
                 {authors.map((author, index) => (
-                  <S.TableRow key={author.id}>
-                    <S.TableCell>{index + 1}</S.TableCell>
-                    <S.TableCell>{author.name}</S.TableCell>
-                    <S.TableCell>
+                  <ES.TableRow key={author.id}>
+                    <ES.TableCell>{index + 1}</ES.TableCell>
+                    <ES.TableCell>{author.name}</ES.TableCell>
+                    <ES.TableCell>
                       <Button
                         size="sm"
                         color="transparent"
@@ -78,20 +78,20 @@ const Authors = () => {
                       >
                         <FaRegTrashAlt />
                       </Button>
-                    </S.TableCell>
-                  </S.TableRow>
+                    </ES.TableCell>
+                  </ES.TableRow>
                 ))}
               </tbody>
-            </S.Table>
+            </ES.Table>
           </>
         )}
       </S.AuthorSection>
-      <ButtonContent>
+      <ES.ButtonContent>
         <Button onClick={() => setModalOpen(true)}>
           <BsPlusLg />
           Adicionar autor
         </Button>
-      </ButtonContent>
+      </ES.ButtonContent>
 
       <Modal isModalOpen={modalOpen}>
         <AuthorsModalContent

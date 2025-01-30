@@ -1,4 +1,5 @@
 import * as S from "./styles";
+import * as ES from "../../styles/index";
 import { CiCircleAlert } from "react-icons/ci";
 import Button from "../Buttons";
 import { BsPlusLg } from "react-icons/bs";
@@ -30,31 +31,31 @@ const Books = () => {
           </S.NoBooks>
         ) : (
           <>
-            <S.Table>
+            <ES.Table>
               <thead>
                 <tr>
-                  <S.TableHeader>Index</S.TableHeader>
-                  <S.TableHeader>Nome do Livro</S.TableHeader>
-                  <S.TableHeader>Ação</S.TableHeader>
+                  <ES.TableHeader>Index</ES.TableHeader>
+                  <ES.TableHeader>Nome do Livro</ES.TableHeader>
+                  <ES.TableHeader>Ação</ES.TableHeader>
                 </tr>
               </thead>
               <tbody>
                 {books.map((book, index) => (
-                  <S.TableRow key={book.id}>
-                    <S.TableCell>{index + 1}</S.TableCell>
-                    <S.TableCell>{book.name}</S.TableCell>
-                    <S.TableCell>
+                  <ES.TableRow key={book.id}>
+                    <ES.TableCell>{index + 1}</ES.TableCell>
+                    <ES.TableCell>{book.name}</ES.TableCell>
+                    <ES.TableCell>
                       <Button size="sm" color="transparent">
                         <FaRegEye />
                       </Button>
                       <Button size="sm">
                         <FaRegTrashAlt />
                       </Button>
-                    </S.TableCell>
-                  </S.TableRow>
+                    </ES.TableCell>
+                  </ES.TableRow>
                 ))}
               </tbody>
-            </S.Table>
+            </ES.Table>
           </>
         )}
       </S.BookSection>
