@@ -11,13 +11,16 @@ import { SubmitHandler } from "react-hook-form";
 import { BookFormValues, BookValues } from "../../types/Books";
 import { useBooks } from "../../hooks/BooksContext";
 import { FaRegEye, FaRegTrashAlt } from "react-icons/fa";
-import DeleteItem from "../ModalContent/DeleteItem";
+import DeleteItem from "../ModalContent/SimpleContent";
+import { useAuthors } from "../../hooks/AuthorsContext";
 
 const Books = () => {
   const { books, addBook, removeBook } = useBooks();
   const [createModalIsOpen, setCreateModalIsOpen] = useState<boolean>(false);
   const [book, setBook] = useState<BookValues | null>(null);
   const [DeleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
+  const [alert, setAlert] = useState<boolean>(false);
+  const { authors } = useAuthors();
 
   const handleAddBook: SubmitHandler<BookFormValues> = (data) => {
     setCreateModalIsOpen(false);
@@ -79,7 +82,11 @@ const Books = () => {
       </S.BookSection>
 
       <ButtonContent>
-        <Button onClick={() => setCreateModalIsOpen(true)}>
+        <Button
+          onClick={() =>
+            authors ? setAlert(true) : setCreateModalIsOpen(true)
+          }
+        >
           <BsPlusLg />
           Adicionar livro
         </Button>
@@ -96,8 +103,20 @@ const Books = () => {
         <DeleteItem
           setCancel={setDeleteModalOpen}
           nextStep={handleDeleteBook}
-          deleteType="livro"
+          type="livro"
         />
+      </Modal>
+
+      <Modal isModalOpen={DeleteModalOpen}>
+        <DeleteItem
+          setCancel={setDeleteModalOpen}
+          nextStep={handleDeleteBook}
+          type="livro"
+        />
+      </Modal>
+
+      <Modal isModalOpen={alert}>
+        <DeleteItem setCancel={setAlert} type="alert" />
       </Modal>
     </>
   );

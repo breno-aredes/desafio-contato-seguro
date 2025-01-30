@@ -16,4 +16,8 @@ export const DeleteContent = styled.div`
     font-size: 30px;
     text-align: center;
   }
+  span {
+    color: #4a90e2;
+    font-weight: bold;
+  }
 `;

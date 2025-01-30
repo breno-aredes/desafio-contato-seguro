@@ -10,7 +10,7 @@ import AuthorsModalContent from "../ModalContent/Authors/Create";
 import { SubmitHandler } from "react-hook-form";
 import { useAuthors } from "../../hooks/AuthorsContext";
 import { FaRegEye, FaRegTrashAlt } from "react-icons/fa";
-import DeleteItem from "../ModalContent/DeleteItem";
+import DeleteItem from "../ModalContent/SimpleContent";
 
 const Authors = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -108,7 +108,7 @@ const Authors = () => {
         <DeleteItem
           setCancel={setDeleteModalOpen}
           nextStep={handleDeleteAuthor}
-          deleteType="autor"
+          type="autor"
         />
       </Modal>
     </>

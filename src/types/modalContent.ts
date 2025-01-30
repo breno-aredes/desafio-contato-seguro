@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 
-export interface DeleteItemProps {
-  nextStep: () => void;
+export interface SimpleContentProps {
   setCancel: Dispatch<SetStateAction<boolean>>;
-  deleteType: string;
+  type: string;
+  nextStep?: () => void;
 }
