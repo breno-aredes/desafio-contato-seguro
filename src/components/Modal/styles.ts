@@ -18,4 +18,11 @@ export const Content = styled(Dialog.Content)`
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
   width: 90%;
   max-width: 500px;
+  @media (max-width: 650px) {
+    max-width: 90%;
+    width: 400px;
+  }
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;

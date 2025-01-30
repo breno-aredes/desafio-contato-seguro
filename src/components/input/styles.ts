@@ -5,7 +5,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 90px;
-
   label {
     font-size: 15px;
     color: #717171;

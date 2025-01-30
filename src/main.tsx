@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { AuthorsProvider } from "./hooks/AuthorsContext";
+import { BooksProvider } from "./hooks/BooksContext";
 
 const root = document.getElementById("root");
 
@@ -10,7 +11,9 @@ if (root) {
   createRoot(root).render(
     <StrictMode>
       <AuthorsProvider>
-        <App />
+        <BooksProvider>
+          <App />
+        </BooksProvider>
       </AuthorsProvider>
     </StrictMode>
   );
